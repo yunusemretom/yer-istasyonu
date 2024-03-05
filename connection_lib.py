@@ -36,8 +36,13 @@ class MavlinkController:
         self.zaman = time.time()
 
     def connection_port(self, port = 'udpin:localhost:14551'):
-        self.master = mavutil.mavlink_connection(port)
-        
+        #self.master = mavutil.mavlink_connection(port)
+        try:
+            self.master = mavutil.mavlink_connection("/dev/ttyACM0", baud=57600) # Bağlantı portu burada yazılmalı
+        except:
+            self.master = mavutil.mavlink_connection("/dev/ttyACM1", baud=57600) # Bazen bağlantı kopup yeniden geldiği zaman diğer porta geçiş yapabiliyor. Bunun için yedek port.
+
+
         self.kanal_sayısı = 8
         self.zaman = time.time()
         print("Waiting for heartbeat")
@@ -242,6 +247,22 @@ class MavlinkController:
         )
 
         self.master.mav.send(set_mode_message)
+
+    def current_location_get(self):
+        message = self.master.recv_match(type=[dialect.MAVLink_position_target_global_int_message.msgname,
+                                       dialect.MAVLink_global_position_int_message.msgname])
+
+        # convert the message to dictionary
+        try:  
+            message = message.to_dict()
+            x,y=0,0
+            if message["mavpackettype"] == dialect.MAVLink_global_position_int_message.msgname:
+                x = message["lat"] * 1e-7
+                y = message["lon"] * 1e-7
+
+            return x,y
+        except:
+            pass
 
 
 # Example usage:
