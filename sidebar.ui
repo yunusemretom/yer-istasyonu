@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Ground Station</string>
   </property>
   <property name="styleSheet">
    <string notr="true">*{
@@ -24,45 +24,74 @@
 }
 
 #top_menu_widget, #icon_only_widget, #full_menu_widget{
-	background-color:#16191d;
-	border-radius: 25px;
-	
-	
+	background-color:#1a1d23;
+	border-radius: 15px;
+	border: 1px solid #2a2d33;
 }
 #centralwidget{
 	background-color:#1f232a;
 }
 
+.QPushButton {
+	background-color: transparent;
+	border: none;
+	padding: 8px;
+	border-radius: 8px;
+	text-align: left;
+}
 
-.QPushButton:hover{
-	
-	background-color:#1f235b;
-	
+.QPushButton:hover {
+	background-color: #2a2d33;
 }
-.QPushButton:checked{
-	background-color:#1f235b;
+
+.QPushButton:checked {
+	background-color: #2a2d33;
+	border-left: 3px solid #0078d7;
 }
+
 #textInput{
 	border-bottom:solid;
 	border-width: 1px;
 	border-color: #42474f;
 }
 #statusBar{
-background-color:#16191d;
+background-color:#1a1d23;
 }
 
 #top_menu_widget{
 	border-radius:10px;
 }
 #profile_widget{
-	background-color:#16191d;
-	border-radius:25px;
+	background-color:#1a1d23;
+	border-radius:15px;
+	border: 1px solid #2a2d33;
 }
 
-QComboBox{
-	background-color:rgb(44, 44, 44)
+QComboBox {
+	background-color: #2a2d33;
+	border: 1px solid #42474f;
+	border-radius: 5px;
+	padding: 5px;
+	min-width: 100px;
 }
 
+QComboBox::drop-down {
+	border: none;
+}
+
+QComboBox::down-arrow {
+	image: url(:/icons/icons/down-arrow.svg);
+	width: 12px;
+	height: 12px;
+}
+
+QComboBox:hover {
+	border-color: #0078d7;
+}
+
+QComboBox:on {
+	border-color: #0078d7;
+}
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -384,7 +413,7 @@ QComboBox{
             </font>
            </property>
            <property name="text">
-            <string>Home</string>
+            <string>Dashboard</string>
            </property>
            <property name="icon">
             <iconset resource="resource.qrc">
@@ -411,6 +440,37 @@ QComboBox{
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="telemetryBtn">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Telemetry</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/icons/icons/chart.svg</normaloff>:/icons/icons/chart.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="shortcut">
+            <string>Ctrl+R</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="mapsBtn_2">
            <property name="font">
             <font>
@@ -423,6 +483,37 @@ QComboBox{
            <property name="icon">
             <iconset resource="resource.qrc">
              <normaloff>:/icons/icons/map.svg</normaloff>:/icons/icons/map.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="shortcut">
+            <string>Ctrl+R</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="cameraBtn">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Camera</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/icons/icons/camera.svg</normaloff>:/icons/icons/camera.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -473,31 +564,18 @@ QComboBox{
           </widget>
          </item>
          <item>
-          <spacer name="verticalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>297</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="settingsBtn_2">
+          <widget class="QPushButton" name="missionBtn">
            <property name="font">
             <font>
              <pointsize>10</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Settings</string>
+            <string>Mission Planner</string>
            </property>
            <property name="icon">
             <iconset resource="resource.qrc">
-             <normaloff>:/icons/icons/settings.svg</normaloff>:/icons/icons/settings.svg</iconset>
+             <normaloff>:/icons/icons/route.svg</normaloff>:/icons/icons/route.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -517,18 +595,62 @@ QComboBox{
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="infoBtn_2">
+          <widget class="QPushButton" name="logsBtn">
            <property name="font">
             <font>
              <pointsize>10</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>İnformations</string>
+            <string>Flight Logs</string>
            </property>
            <property name="icon">
             <iconset resource="resource.qrc">
-             <normaloff>:/icons/icons/info.svg</normaloff>:/icons/icons/info.svg</iconset>
+             <normaloff>:/icons/icons/file-text.svg</normaloff>:/icons/icons/file-text.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>24</width>
+             <height>24</height>
+            </size>
+           </property>
+           <property name="shortcut">
+            <string>Ctrl+R</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="settingsBtn_2">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Settings</string>
+           </property>
+           <property name="icon">
+            <iconset resource="resource.qrc">
+             <normaloff>:/icons/icons/settings.svg</normaloff>:/icons/icons/settings.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -649,48 +771,50 @@ QComboBox{
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <widget class="QComboBox" name="PortSelect">
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>0</height>
-               </size>
+             <widget class="QLabel" name="connectionStatus">
+              <property name="styleSheet">
+               <string notr="true">QLabel {
+    background-color: #2a2d33;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: #ff4444;
+}</string>
               </property>
-              <property name="duplicatesEnabled">
-               <bool>false</bool>
+              <property name="text">
+               <string>Disconnected</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="PortSelect">
+              <property name="placeholderText">
+               <string>Select Port</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QComboBox" name="BaudRateSelect">
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="sizeIncrement">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
+              <property name="placeholderText">
+               <string>Baud Rate</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="Connection_Button">
-              <property name="text">
-               <string/>
-              </property>
               <property name="icon">
                <iconset resource="resource.qrc">
                 <normaloff>:/icons/icons/connection_img.png</normaloff>:/icons/icons/connection_img.png</iconset>
               </property>
-              <property name="iconSize">
-               <size>
-                <width>30</width>
-                <height>30</height>
-               </size>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: #2a2d33;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #3a3d43;
+}</string>
               </property>
              </widget>
             </item>
@@ -845,7 +969,7 @@ QScrollBar::handle:vertical {
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;kjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbd&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;kjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbdkjdnbkdjfndkfjdnfkdjfndfkjdndkjnk&lt;br /&gt;dflbdknfbldfbd&lt;br /&gt;fbdfdfdbfdfbd&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                    </property>
                    <property name="overwriteMode">
                     <bool>false</bool>

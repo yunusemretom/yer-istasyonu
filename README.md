@@ -3,6 +3,8 @@
 ## 📋 Proje Hakkında
 Bu proje, modern bir uçuş simülasyonu arayüzü sunan bir Python uygulamasıdır. PyQt5 kullanılarak geliştirilmiş olup, gerçek zamanlı uçuş göstergeleri ve kamera görüntüsü entegrasyonu içermektedir.
 
+![geliştirme aşamasında](./image.png)
+
 ## ✨ Özellikler
 - 🎮 Gerçek zamanlı uçuş göstergeleri
 - 📹 Kamera görüntüsü entegrasyonu
@@ -11,7 +13,7 @@ Bu proje, modern bir uçuş simülasyonu arayüzü sunan bir Python uygulamasıd
 - 📊 Uçuş verilerinin görselleştirilmesi
 
 ## 🛠️ Teknolojiler
-- Python 3.x
+- Python 3.10
 - PyQt5
 - OpenCV
 - NumPy
